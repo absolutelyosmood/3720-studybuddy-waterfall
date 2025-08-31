@@ -14,6 +14,9 @@ class Course
     private:
         string courseName;
         string courseCode;
+    public:
+        void setName(string code);
+        void setCode(string name);
 };
 
 class Availability
@@ -48,6 +51,7 @@ class Student
         vector<Availability> availability;
         vector<Session*> scheduledSessions;
     public:
+        Student();
         void createProfile();
         void updateProfile();
         void addAvailability(const Availability& slot);
