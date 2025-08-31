@@ -8,8 +8,7 @@ int main (){
         std::cout << "Welcome to the study buddy!\n";
         std::cout << "Please choose what you want to do.\n";
         std::cout << "[1] Create Profile\n[2]Edit Availability\n[3]Manage Profile\n";
-        std::cout << "[4]Search for Study Buddy\n[5]Schedule a Study Session\n[6]Check Invitations\n";
-        std::cout << "[7]Exit\n";
+        std::cout << "[4]Search for Study Buddy\n[5]Schedule a Study Session\n[6]Exit\n";
         std::cin >> choice;
         if(choice == 0 || choice > 7){
             std::cout << "Your choice must be 1-7";
