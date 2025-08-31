@@ -37,6 +37,7 @@ class Session
         string dateTime;
         SessionStatus status;
     public:
+        Session(Course course, string dateTime, vector<Student*> students);
         void sendInvitation();
         void confirm();
         void decline();

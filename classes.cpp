@@ -1,9 +1,16 @@
 #include "classes.h"
 
 //Session Class
-void Session::sendInvitation()
+Session::Session(Course course, string dateTime, vector<Student*> students)
 {
     sessionID = rand() % 8999 + 1000;
+    Session::course = course;
+    Session::dateTime = dateTime;
+    participants = students;
+}
+
+void Session::sendInvitation()
+{
     status = PENDING;
 }
 
