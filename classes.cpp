@@ -1,50 +1,61 @@
 #include "classes.h"
 
-        void sendInvitation()
-        {
+void Session::sendInvitation()
+{
 
-        }
-        void confirm()
-        {
+}
 
-        }
-        void decline()
-        {
+void Session::confirm()
+{
 
-        }
-        void createProfile()
-        {
+}
 
-        }
-        void updateProfile()
-        {
+void Session::decline()
+{
 
-        }
-        void addAvailability(const Availability& slot)
-        {
+}
 
-        }
-        void removeAvailability(const Availability& slot)
-        {
+void Student::createProfile()
+{
 
-        }
-        vector<Student*> searchBuddies(const Course& course)
-        {
+}
 
-        }
-        vector<Student*> recieveMatchSuggestions()
-        {
+void Student::updateProfile()
+{
 
-        }
-        void scheduleSession(Session* session)
-        {
+}
 
-        }
-        void confirmSession(Session* session)
-        {
+void Student::addAvailability(const Availability& slot)
+{
 
-        }
-        void declinesession(Session* session)
-        {
-            
-        }
+}
+
+void Student::removeAvailability(const Availability& slot)
+{
+
+}
+
+vector<Student*> Student::searchBuddies(const Course& course)
+{
+
+}
+
+vector<Student*> Student::recieveMatchSuggestions()
+{
+
+}
+
+void Student::scheduleSession(Session* session)
+{
+
+}
+
+void Student::confirmSession(Session* session)
+{
+
+}
+
+void Student::declinesession(Session* session)
+{
+    
+}
