@@ -26,6 +26,10 @@ class Availability
         string date;
         string startTime;
         string endTime;
+    public:
+        void setDate(string date);
+        void setStart(string startTime);
+        void setEnd(string endTime);
 };
 
 class Session
@@ -37,6 +41,7 @@ class Session
         string dateTime;
         SessionStatus status;
     public:
+        Session();
         Session(Course course, string dateTime, vector<Student*> students);
         void sendInvitation();
         void confirm();

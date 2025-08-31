@@ -19,8 +19,11 @@ int main (){
         }
         else if(choice == 2){
             Student placeholder;
+            string avHolder;
             int AvailabilityChoice = 0;
             bool AvailabilityLoop = true;
+            std::cout << "Please input the date for your availability.";
+            std::getline(cin, avHolder);
             std::cout << "Are you adding or removing availability? type 1 to add type 2 to remove\n";
             std::cin >> AvailabilityChoice;
             while(AvailabilityLoop)

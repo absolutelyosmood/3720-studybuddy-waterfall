@@ -1,6 +1,12 @@
 #include "classes.h"
 
-//Session Class
+// Session Class
+
+Session::Session()
+{
+    sessionID = rand() % 8999 + 1000;
+}
+
 Session::Session(Course course, string dateTime, vector<Student*> students)
 {
     sessionID = rand() % 8999 + 1000;
@@ -33,6 +39,22 @@ void Course::setCode(string code)
 void Course::setName(string name)
 {
     courseName = name;
+}
+
+//Availability Class
+void Availability::setDate(string date)
+{
+    Availability::date = date;
+}
+
+void Availability::setStart(string startTime)
+{
+    Availability::startTime = startTime;
+}
+
+void Availability::setEnd(string endTime)
+{
+    Availability::endTime = endTime;
 }
 
 //Student Class
