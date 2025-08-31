@@ -1,0 +1,61 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+enum SessionStatus
+{
+    PENDING,
+    CONFIRMED,
+    DECLINED
+};
+
+class Course
+{
+    private:
+        string courseName;
+        string courseCode;
+};
+
+class Availability
+{
+    private:
+        string date;
+        string startTime;
+        string endTime;
+};
+
+class Session
+{
+    private:
+        string sessionID;
+        vector<Student*> participants;
+        Course course;
+        string dateTime;
+        SessionStatus status;
+    public:
+        void sendInvitation();
+        void confirm();
+        void decline();
+};
+
+class Student 
+{
+
+    private:
+        string name;
+        string email;
+        vector<Course> courses;
+        vector<Availability> availability;
+        vector<Session*> scheduledSessions;
+    public:
+        void createProfile();
+        void updateProfile();
+        void addAvailability(const Availability& slot);
+        void removeAvailability(const Availability& slot);
+        vector<Student*> searchBuddies(const Course& course);
+        vector<Student*> recieveMatchSuggestions();
+        void scheduleSession(Session* session);
+        void confirmSession(Session* session);
+        void declinesession(Session* session);
+
+};
