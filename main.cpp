@@ -41,6 +41,8 @@ int main (){
             std::cout << "Are you adding or removing availability? type 1 to add type 2 to remove\n";
             std::cin >> AvailabilityChoice;
             while(AvailabilityLoop)
+            std::cin.ignore();
+            std::cin >> AvailabilityChoice;
                 if(AvailabilityChoice == 1){
                     schoolDir.at(studentNum).addAvailability(tempAV);
                     AvailabilityLoop = false;
@@ -67,15 +69,16 @@ int main (){
             string sessionIn;
             std::cout << "Please input the date for your session:\n";
             std::cin >> sessionIn;
-            Session sessionFinder;
+            Session sessionFinder();
             Course tempCourse = makeCourse();
             std::vector<Student*> sessionBuddies = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir, studentNum);
 
             Session newSession(tempCourse, sessionIn, sessionBuddies);
 
-            std::cout << "Are you accepting or declining this invitation? Type 1 for Schedule type 2 for Accept/Deny.\n";
-            std::cin >> sessionChoice;
+            std::cout << "Type 1 for Schedule type 2 for Accept/Deny.\n";
             while (sessionLoop){
+                std::cin.ignore();
+                std::cin >> sessionChoice;
                 if(sessionChoice == 1){
                 schoolDir.at(studentNum).scheduleSession(&newSession);
                 sessionLoop = false;

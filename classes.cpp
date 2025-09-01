@@ -84,6 +84,7 @@ Student::Student()
 
 void Student::createProfile()
 {
+    cin.ignore();
     printf("Please input your name: ");
     getline(cin, name);
     printf("Please input your email: ");
@@ -100,15 +101,17 @@ void Student::updateProfile()
     int userChoice = 3;
     printf("What would you like to update? (Please input 0 for email, "
         "1 for courses, or 2 for name)\n");
-
-    scanf("%d", userChoice);
+    std::cin.ignore();
+    std::cin >> userChoice;
     switch(userChoice) {
         case 0:
+            std::cin.ignore();
             printf("Please input your new email: ");
             getline(cin, Student::email);
             break;
         case 1:
             printf("Please input the course's number: ");
+            std::cin.ignore();
             getline(cin, courseNum);
             courseHolder.setCode(courseNum);
             printf("Please input the course's name: ");
@@ -116,6 +119,7 @@ void Student::updateProfile()
             courseHolder.setCode(courseName);
             break;
         case 2:
+            std::cin.ignore();
             printf("Please input your new name: ");
             getline(cin, Student::name);
             break;
