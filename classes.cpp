@@ -1,7 +1,6 @@
 #include "classes.h"
 
 // Session Class
-
 Session::Session()
 {
     sessionID = rand() % 8999 + 1000;
@@ -42,6 +41,20 @@ void Course::setName(string name)
 }
 
 //Availability Class
+Availability::Availability()
+{
+    Availability::date = "";
+    Availability::startTime = "";
+    Availability::endTime = "";
+}
+
+Availability::Availability(string date, string startTime, string endTime)
+{
+    Availability::date = date;
+    Availability::startTime = startTime;
+    Availability::endTime = endTime;
+}
+
 void Availability::setDate(string date)
 {
     Availability::date = date;
@@ -121,20 +134,15 @@ void Student::removeAvailability(const Availability& slot)
     availability.erase(find(availability.begin(), availability.end(), slot));
 }
 
-vector<Student*> Student::searchBuddies(const Course& course)
+vector<Student*> Student::searchBuddies(const Course& course, vector<Student> studentDir)
 {
     vector<Student*> matches;
     //TODO: Find out how to search through full list of students
-    for() {
+    for(int i = 0; i <= studentDir.size(); i++) {
 
     }
 
     return matches;
-}
-
-vector<Student*> Student::recieveMatchSuggestions()
-{
-    //Same functionality as searchBuddies???
 }
 
 void Student::scheduleSession(Session* session)

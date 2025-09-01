@@ -27,6 +27,8 @@ class Availability
         string startTime;
         string endTime;
     public:
+        Availability();
+        Availability(string date, string startTime, string endTime);
         void setDate(string date);
         void setStart(string startTime);
         void setEnd(string endTime);
@@ -50,7 +52,6 @@ class Session
 
 class Student 
 {
-
     private:
         string name;
         string email;
@@ -63,8 +64,7 @@ class Student
         void updateProfile();
         void addAvailability(const Availability& slot);
         void removeAvailability(const Availability& slot);
-        vector<Student*> searchBuddies(const Course& course);
-        vector<Student*> recieveMatchSuggestions();
+        vector<Student*> searchBuddies(const Course& course, vector<Student> studentDir);
         void scheduleSession(Session* session);
         void confirmSession(Session* session);
         void declinesession(Session* session);

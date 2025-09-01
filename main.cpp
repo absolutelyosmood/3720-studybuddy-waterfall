@@ -1,10 +1,15 @@
 #include "classes.h"
 #include <iostream>
 
+Course makeCourse();
+
+
 int main (){
+    std::vector<Student> schoolDir;
     bool loop;
     int choice = 0;
     while(loop){
+        int studentNum = 0;
         std::cout << "Welcome to the study buddy!\n";
         std::cout << "Please choose what you want to do.\n";
         std::cout << "[1] Create Profile\n[2]Edit Availability\n[3]Manage Profile\n";
@@ -15,24 +20,33 @@ int main (){
         }
         else if(choice == 1){
             Student placeholder;
-            placeholder.createProfile();
+            schoolDir.push_back(placeholder);
+            schoolDir.back().createProfile();
+            studentNum = schoolDir.size();
         }
         else if(choice == 2){
-            Student placeholder;
+            Availability tempAV;
             string avHolder;
             int AvailabilityChoice = 0;
             bool AvailabilityLoop = true;
-            std::cout << "Please input the date for your availability.";
-            std::getline(cin, avHolder);
+            std::cout << "Please input the date for your availability.\n";
+            std::cin >> avHolder;
+            tempAV.setDate(avHolder);
+            std::cout << "Please input the start time for your availability in the format: HH:MM AM/PM\n";
+            std::cin >> avHolder;
+            tempAV.setStart(avHolder);
+            std::cout << "Please input the end time for your availability in the format: HH:MM AM/PM\n";
+            std::cin >> avHolder;
+            tempAV.setEnd(avHolder);
             std::cout << "Are you adding or removing availability? type 1 to add type 2 to remove\n";
             std::cin >> AvailabilityChoice;
             while(AvailabilityLoop)
                 if(AvailabilityChoice == 1){
-                    placeholder.addAvailability();
+                    schoolDir.at(studentNum).addAvailability(tempAV);
                     AvailabilityLoop = false;
                 }
                 else if(AvailabilityChoice == 2){
-                    placeholder.removeAvailability();
+                    schoolDir.at(studentNum).removeAvailability(tempAV);
                     AvailabilityLoop = false;
                 }
                 else{
@@ -41,23 +55,29 @@ int main (){
             
         }
         else if(choice == 3){
-            Student placeholder;
-            placeholder.updateProfile();
+            schoolDir.at(studentNum).updateProfile();
         }
         else if(choice == 4){
-            Student placeholder;
-            placeholder.searchBuddies();
+            Course tempCourse = makeCourse();
+            std::vector<Student*> foundBuds = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir);
         }
         else if(choice == 5){
-            Student placeholder;
             bool sessionLoop;
             int sessionChoice;
+            string sessionIn;
+            std::cout << "Please input the date for your session:\n";
+            std::cin >> sessionIn;
+            Session sessionFinder();
+            Course tempCourse = makeCourse();
+            std::vector<Student*> sessionBuddies = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir);
+
+            Session newSession(tempCourse, sessionIn, sessionBuddies);
+
             std::cout << "Are you accepting or declining this invitation? Type 1 for Schedule type 2 for Accept/Deny.\n";
             std::cin >> sessionChoice;
             while (sessionLoop){
                 if(sessionChoice == 1){
-                placeholder.searchBuddies();
-                placeholder.scheduleSession();
+                schoolDir.at(studentNum).scheduleSession(&newSession);
                 sessionLoop = false;
                 }
                 else if(sessionChoice == 2){
@@ -65,11 +85,11 @@ int main (){
                     std::cin >> sessionChoice;
                     while (sessionLoop){
                         if(sessionChoice == 1){
-                            placeholder.confirmSession();
+                            schoolDir.at(studentNum).confirmSession(&newSession);
                             sessionLoop = false;
                         }
                         else if(sessionChoice == 2){
-                            placeholder.declinesession();
+                            schoolDir.at(studentNum).declinesession(&newSession);
                             sessionLoop = false;
                         }
                         else{
@@ -77,13 +97,27 @@ int main (){
                         }
                     }
                     }
-                }
-                else{
-                    std::cout << "The choice must be one or two.\n";
+                    else {
+                        std::cout << "The choice must be one or two.\n";
+                    }
                 }
             }
         else if(choice == 6){
             loop = false;
         }
     }
+}
+
+Course makeCourse()
+{
+    Course newCourse;
+    string stringHolder;
+    std::cout << "Please input your course's number.\n";
+    std::cin >> stringHolder;
+    newCourse.setCode(stringHolder);
+    std::cout << "Please input your course's name.\n";
+    std::cin >> stringHolder;
+    newCourse.setName(stringHolder);
+
+    return newCourse;
 }
