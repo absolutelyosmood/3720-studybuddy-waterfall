@@ -59,7 +59,7 @@ int main (){
         }
         else if(choice == 4){
             Course tempCourse = makeCourse();
-            std::vector<Student*> foundBuds = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir);
+            std::vector<Student*> foundBuds = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir, studentNum);
         }
         else if(choice == 5){
             bool sessionLoop;
@@ -69,7 +69,7 @@ int main (){
             std::cin >> sessionIn;
             Session sessionFinder();
             Course tempCourse = makeCourse();
-            std::vector<Student*> sessionBuddies = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir);
+            std::vector<Student*> sessionBuddies = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir, studentNum);
 
             Session newSession(tempCourse, sessionIn, sessionBuddies);
 

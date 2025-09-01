@@ -134,12 +134,13 @@ void Student::removeAvailability(const Availability& slot)
     availability.erase(find(availability.begin(), availability.end(), slot));
 }
 
-vector<Student*> Student::searchBuddies(const Course& course, vector<Student> studentDir)
+vector<Student*> Student::searchBuddies(const Course& course, vector<Student> studentDir, int studentNum)
 {
     vector<Student*> matches;
     //TODO: Find out how to search through full list of students
     for(int i = 0; i <= studentDir.size(); i++) {
-
+        if (studentDir.at(i).courses == studentDir.at(studentNum).courses)
+            matches.push_back(&studentDir.at(i));
     }
 
     return matches;

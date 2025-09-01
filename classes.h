@@ -64,7 +64,7 @@ class Student
         void updateProfile();
         void addAvailability(const Availability& slot);
         void removeAvailability(const Availability& slot);
-        vector<Student*> searchBuddies(const Course& course, vector<Student> studentDir);
+        vector<Student*> searchBuddies(const Course& course, vector<Student> studentDir, int studentNum);
         void scheduleSession(Session* session);
         void confirmSession(Session* session);
         void declinesession(Session* session);
