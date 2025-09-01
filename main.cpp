@@ -67,7 +67,7 @@ int main (){
             string sessionIn;
             std::cout << "Please input the date for your session:\n";
             std::cin >> sessionIn;
-            Session sessionFinder();
+            Session sessionFinder;
             Course tempCourse = makeCourse();
             std::vector<Student*> sessionBuddies = schoolDir.at(studentNum).searchBuddies(tempCourse, schoolDir, studentNum);
 
