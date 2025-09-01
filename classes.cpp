@@ -137,10 +137,19 @@ void Student::removeAvailability(const Availability& slot)
 vector<Student*> Student::searchBuddies(const Course& course, vector<Student> studentDir, int studentNum)
 {
     vector<Student*> matches;
-    //TODO: Find out how to search through full list of students
-    for(int i = 0; i <= studentDir.size(); i++) {
-        if (studentDir.at(i).courses == studentDir.at(studentNum).courses)
-            matches.push_back(&studentDir.at(i));
+
+    for (int i = 0; i < studentDir.size(); i++) {
+        // Skip comparing the student to themself
+        if (i == studentNum) continue;
+
+        // Loop through courses of student i
+        for (const Course& theirCourse : studentDir.at(i).courses) {
+            // Compare with the given course
+            if (theirCourse == course) {
+                matches.push_back(&studentDir.at(i));
+                break; // Stop after finding one match
+            }
+        }
     }
 
     return matches;

@@ -6,7 +6,7 @@ Course makeCourse();
 
 int main (){
     std::vector<Student> schoolDir;
-    bool loop;
+    bool loop = true;
     int choice = 0;
     while(loop){
         int studentNum = 0;

@@ -1,9 +1,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
-using namespace std;
-
+#include <algorithm>
 class Student;
+using namespace std;
 
 enum SessionStatus
 {
@@ -20,6 +20,9 @@ class Course
     public:
         void setName(string code);
         void setCode(string name);
+        bool operator==(const Course& other) const {
+            return this->courseCode == other.courseCode;
+        }
 };
 
 class Availability
@@ -34,6 +37,12 @@ class Availability
         void setDate(string date);
         void setStart(string startTime);
         void setEnd(string endTime);
+        bool operator==(const Availability& other) const {
+        return this->date == other.date &&
+               this->startTime == other.startTime &&
+               this->endTime == other.endTime;
+    }
+        
 };
 
 class Session
